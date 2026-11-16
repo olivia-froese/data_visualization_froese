@@ -7,18 +7,47 @@
   --accent: #FFC200;
   --accent-2: #7EA3CF;
   --danger: #FF0000;
+  --vault-spin-duration: 18s;
+  --vault-size: min(300px, 70.7vw, 70.7vh);
+  --page-inline-padding: 22px;
+}
+@font-face {
+  font-family: "Monofonto";
+  src: url("assets/monofonto.otf") format("opentype");
+  font-display: swap;
 }
 * { box-sizing: border-box; }
 body {
   margin: 0;
   color: var(--ink);
   background: radial-gradient(circle at 50% 0%, #7EA3CF 0, var(--bg) 42rem);
-  font: 15px/1.5 system-ui, -apple-system, Segoe UI, sans-serif;
+  font: 15px/1.5 "Monofonto", monospace;
 }
-main { max-width: 1240px; margin: auto; padding: 34px 22px 56px; }
+.vault-door {
+  position: fixed;
+  top: calc(var(--vault-size) * .7071);
+  right: calc(var(--page-inline-padding) + (var(--vault-size) * .7071));
+  z-index: 0;
+  display: block;
+  width: var(--vault-size);
+  height: var(--vault-size);
+  max-width: 100vw;
+  max-height: 100vh;
+  object-fit: contain;
+  opacity: .75;
+  pointer-events: none;
+  transform: translate(50%, -50%);
+  transform-origin: center;
+  animation: vault-door-spin var(--vault-spin-duration) linear infinite;
+}
+@keyframes vault-door-spin {
+  to { transform: translate(50%, -50%) rotate(360deg); }
+}
+main { position: relative; z-index: 1; max-width: 1240px; margin: auto; padding: 34px 22px 56px; }
 header { display: flex; gap: 24px; align-items: end; justify-content: space-between; margin-bottom: 22px; }
-h1 { margin: 0; font: 700 clamp(2rem, 5vw, 4.5rem)/.95 Georgia, serif; letter-spacing: -.05em; }
+h1 { margin: 0; font: 700 clamp(2rem, 5vw, 4.5rem)/.95 "Monofonto", monospace; letter-spacing: -.05em; }
 .site-header-logo { display: block; max-width: min(100%, 360px); height: auto; }
+.site-subheader { min-height: 1.5em; margin: 10px 0 0; color: var(--accent); font-size: clamp(1.1rem, 2vw, 1.6rem); }
 .lede { max-width: 510px; margin: 0; color: var(--muted); }
 .toolbar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 20px 0; }
 label { color: var(--muted); }
@@ -123,7 +152,7 @@ button:hover, button[aria-pressed="true"] { border-color: var(--accent); color: 
 .data-point { cursor: help; outline: none; }
 .point-tooltip {
   fill: var(--ink);
-  font-size: 11px;
+  font-size: 22.1px;
   pointer-events: none;
   opacity: 0;
   paint-order: stroke;
@@ -134,10 +163,11 @@ button:hover, button[aria-pressed="true"] { border-color: var(--accent); color: 
 }
 .data-point:hover .point-tooltip,
 .data-point:focus .point-tooltip { opacity: 1; }
-.center-label { fill: var(--accent); font: 700 17.85px Georgia, serif; text-anchor: middle; }
-.month-label { fill: var(--muted); font-size: 11.55px; text-anchor: middle; }
+.center-label { fill: var(--accent); font: 700 21.85px "Monofonto", monospace; text-anchor: middle; }
+.month-label { fill: var(--muted); font-size: 15.55px; text-anchor: middle; }
 .spike-ring { fill: none; stroke: #EE4B2B; stroke-width: 3; }
 @media (max-width: 850px) {
+  :root { --vault-size: min(150px, 70.7vw, 70.7vh); }
   header { display: block; } .lede { margin-top: 16px; }
   .layout { grid-template-columns: 1fr; } .index { position: static; }
   .chart-card, .chart-card > svg { min-height: 720px; }

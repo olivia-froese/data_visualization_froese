@@ -108,7 +108,7 @@ function pointTooltipMarkup(row, x, y) {
   const tooltipX = Math.max(18, Math.min(1582, x + 12));
   const textAnchor = tooltipX > 1380 ? "end" : "start";
   const tooltipY = Math.max(28, Math.min(1350, y - 12));
-  return `<text x="${tooltipX}" y="${tooltipY}" class="point-tooltip" text-anchor="${textAnchor}"><tspan x="${tooltipX}" dy="0">${escapeXml(formatPeriod(row.month))}</tspan><tspan x="${tooltipX}" dy="14">${formatNumber(row.peak_concurrent_players)} players</tspan></text>`;
+  return `<text x="${tooltipX}" y="${tooltipY}" class="point-tooltip" text-anchor="${textAnchor}"><tspan x="${tooltipX}" dy="0">${escapeXml(formatPeriod(row.month))}</tspan><tspan x="${tooltipX}" dy="21">${formatNumber(row.peak_concurrent_players)} players</tspan></text>`;
 }
 function buildData(rows) {
   return [...new Set(rows.map(row => row.game))].map(game => {
