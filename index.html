@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fallout Steam Player Starburst</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header>
+    <div><h1><img class="site-header-logo" src="assets/Fallout_Header.png" alt="Fallout"></h1><p class="lede">Data Visualization of the 2016-2025 Steam concurrent player data.</p><div id="status">8 games · 894 monthly records</div></div>
+  </header>
+  <div class="toolbar">
+    <label for="view-select">View:
+      <select id="view-select" aria-label="Choose yearly or monthly view"></select>
+    </label>
+    <button id="spike-toggle" aria-pressed="false">Correlation to the Fallout Show release</button>
+    <div class="legend"><span><i class="dot"></i> Peak concurrent players</span><span><i class="dot premiere"></i> April 2024 premiere month</span></div>
+  </div>
+  <section class="layout">
+    <div class="chart-card"><p id="chart-summary" class="chart-summary" aria-live="polite"></p><svg id="chart" viewBox="0 0 1600 1400" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Starburst diagram of Fallout games and monthly peak concurrent players"></svg></div>
+    <aside class="index"><button id="zoom-toggle" class="game-button zoom-button" aria-pressed="false">Zoom tool</button><h2>Key index</h2><div id="game-list"></div><section class="editable-copy"><h3>G U I D E</h3>
+      <ul>
+        <li>Hovering over data points will display additional information like dates and exact player counts.</li>
+        <li>Yearly overview is a toggle down menu to show exact montly data of any chosen year.</li>
+      </ul>
+    </section></aside>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
